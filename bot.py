@@ -17,10 +17,10 @@ from database.users_chats_db import db
 from database.join_reqs import JoinReqs
 from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, REQ_CHANNEL 
 from utils import temp
-from aiohttp import web
 from plugins.web_support import web_server
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
+PORT = environ.get("PORT", "8080")
 
 class Bot(Client):
 
@@ -62,8 +62,7 @@ class Bot(Client):
         app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
-        await web.TCPSite(app, bind_address, info.PORT).start()
-        logging.info(f"{me.first_name} ✅✅ BOT started successfully ✅✅")
+        await web.TCPSite(app, bind_address, PORT).start()
 
     async def stop(self, *args):
         await super().stop()
