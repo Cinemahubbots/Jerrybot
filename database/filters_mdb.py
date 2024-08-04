@@ -43,6 +43,18 @@ async def add_gfilter(gfilters, text, reply_text, btn, file, alert):
     except:
         logger.exception('Some error occured!', exc_info=True)
              
+async def get_filters(group_id):
+    mycol = mydb[str(group_id)]
+
+    texts = []
+    query = mycol.find()
+    try:
+        for file in query:
+            text = file['text']
+            texts.append(text)
+    except:
+        pass
+    return texts
      
 async def find_gfilter(gfilters, name):
     mycol = mydb[str(gfilters)]
