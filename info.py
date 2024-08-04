@@ -47,7 +47,7 @@ JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 DELETE_TIMEOUT = int(environ.get('DELETE_TIMEOUT', 2*60*60)) # 2 hours in seconds
 
 # Others
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1002010307613)
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1002010307613))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "False")), False)
