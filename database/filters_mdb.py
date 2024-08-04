@@ -61,7 +61,25 @@ async def find_gfilter(gfilters, name):
         return reply_text, btn, alert, fileid
     except:
         return None, None, None, None
-
+        
+async def find_filter(group_id, name):
+    mycol = mydb[str(group_id)]
+    
+    query = mycol.find( {"text":name})
+    # query = mycol.find( { "$text": {"$search": name}})
+    try:
+        for file in query:
+            reply_text = file['reply']
+            btn = file['btn']
+            fileid = file['file']
+            try:
+                alert = file['alert']
+            except:
+                alert = None
+        return reply_text, btn, alert, fileid
+    except:
+        return None, None, None, None
+        
 async def del_all(message, group_id, title):
     if str(group_id) not in mydb.list_collection_names():
         await message.edit_text(f"Nothing to remove in {title}!")
