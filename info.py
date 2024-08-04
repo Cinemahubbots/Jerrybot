@@ -37,7 +37,7 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://anuragam:anuragam@cluster0.p5xynbv.mongodb.net/")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://JEERY3:JERRY3@cluster0.tmbwdqv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI3 = environ.get('DATABASE_URI3', "mongodb+srv://JEERY4:JERRY4@cluster0.b41jpnc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_URI4 = environ.get('DATABASE_URI4', "mongodb+srv://Jerrycbbot:Jerrycbbot@cluster0.hxkjmbw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DATABASE_URI4 = environ.get('DATABASE_URI4', "mongodb+srv://Nikhilav4:Nikhilav4@cluster0.harzihg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI5 = environ.get('DATABASE_URI5', "mongodb+srv://JEERY5:JEERY5@cluster0.kaplqbo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
                             
 # FSUB
