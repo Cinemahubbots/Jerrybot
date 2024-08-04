@@ -11,7 +11,6 @@ logging.getLogger("imdbpy").setLevel(logging.ERROR)
 
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
-from info import info
 from database.ia_filterdb import Media
 from database.users_chats_db import db
 from database.join_reqs import JoinReqs
