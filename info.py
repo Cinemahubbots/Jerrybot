@@ -58,7 +58,7 @@ Main Channel ➧ https://t.me/+_CIGB5Zb3k4zZTg1
 🎗️ʝσιи 🎗️ ѕнαяє🎗️ ѕυρρσят🎗️
 ╚════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╝>""")
 
-
+PORT = int(os.environ.get("PORT", "8080"))
 
 
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
