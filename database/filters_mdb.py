@@ -62,7 +62,19 @@ async def find_gfilter(gfilters, name):
     except:
         return None, None, None, None
 
+async def del_all(message, group_id, title):
+    if str(group_id) not in mydb.list_collection_names():
+        await message.edit_text(f"Nothing to remove in {title}!")
+        return
 
+    mycol = mydb[str(group_id)]
+    try:
+        mycol.drop()
+        await message.edit_text(f"All filters from {title} has been removed")
+    except:
+        await message.edit_text("Couldn't remove all filters from group!")
+        return
+        
 async def get_gfilters(gfilters):
     mycol = mydb[str(gfilters)]
 
