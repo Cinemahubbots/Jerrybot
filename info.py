@@ -1,5 +1,5 @@
 import re
-import os
+from os import environ
 from dotenv import load_dotenv
 load_dotenv("./dynamic.env", override=True)
 
