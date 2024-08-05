@@ -32,7 +32,7 @@ auth_grp = environ.get('AUTH_GROUP')
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 DATABASE_NAME = environ.get('DATABASE_NAME', "saniyav4")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'leo_files')
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://saniyav4:saniyav4@cluster0.tknhrjm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://Jerrycbbot:Jerrycbbot@cluster0.hxkjmbw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI3 = environ.get('DATABASE_URI3', "mongodb+srv://JEERY4:JEERY4@cluster0.b41jpnc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
