@@ -34,11 +34,11 @@ AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 # MongoDB information
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Jerrycbbot:Jerrycbbot@cluster0.hxkjmbw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Ramanan:Ramanan@cluster0.lvbe2wu.mongodb.net/")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://Jerrycbbot:Jerrycbbot@cluster0.hxkjmbw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_URI3 = environ.get('DATABASE_URI3', "mongodb+srv://JEERY3:PASSCHNG@cluster0.tmbwdqv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_URI4 = environ.get('DATABASE_URI4', "mongodb+srv://JEERY4:JEERY4@cluster0.b41jpnc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_URI5 = environ.get('DATABASE_URI5', "mongodb+srv://JEERY5:JEERY5@cluster0.kaplqbo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DATABASE_URI3 = environ.get('DATABASE_URI3', "mongodb+srv://Leachv3:Leachv3@cluster0.rasbnes.mongodb.net/")
+DATABASE_URI4 = environ.get('DATABASE_URI4', "mongodb+srv://Leachv2:Leachv2@cluster0.4unag2e.mongodb.net/")
+DATABASE_URI5 = environ.get('DATABASE_URI5', "mongodb+srv://Leachv1:Leachv1@cluster0.qpe5zxx.mongodb.net/")
                             
 # FSUB
 auth_channel = environ.get('AUTH_CHANNEL')
