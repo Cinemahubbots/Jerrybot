@@ -41,6 +41,7 @@ class Media2(Document):
     file_size = fields.IntField(required=True)
     file_type = fields.StrField(allow_none=True)
     mime_type = fields.StrField(allow_none=True)
+    caption = fields.StrField(allow_none=True)
     
     class Meta:
         indexes = ('$file_name', )
