@@ -55,12 +55,7 @@ SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "False")), False)
 SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), False)
-CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", """<b>📂Fɪʟᴇɴᴀᴍᴇ : {file_name}</b>
-╔════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╗
-Main Channel ➧ https://t.me/+_CIGB5Zb3k4zZTg1
-🎗️ʝσιи 🎗️ ѕнαяє🎗️ ѕυρρσят🎗️
-╚════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╝>""")
-
+CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", f"{script.CUSTOM_FILE_CAPTION}")
 
 
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
