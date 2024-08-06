@@ -167,7 +167,7 @@ async def send_file(client, query, ident, file_id):
                             [                            
                             InlineKeyboardButton("🎥NEW MOVIES 🎥", url="https://t.me/+o34NLPXx4ZMyYWU1"),
                           ],[     
-                            InlineKeyboardButton("💥Sʜᴀʀᴇ💥", url=f'https://telegram.me/share/url?url={link}')
+                            InlineKeyboardButton("💥Sʜᴀʀᴇ💥", url="https://t.me/share/url?url=https://t.me/UPDATECHANNELHUB")
                            ]
                         ]
                     )
