@@ -89,6 +89,13 @@ This module only works for my admins
 • /unban  - <code>to unban a user.</code>
 • /channel - <code>to get list of total connected channels</code>
 • /broadcast - <code>to broadcast a message to all users</code>"""
+   
+    CUSTOM_FILE_CAPTION = """<b>📂Fɪʟᴇɴᴀᴍᴇ : {file_name}</b>
+╔════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╗
+Main Channel ➧ https://t.me/+_CIGB5Zb3k4zZTg1
+🎗️ʝσιи 🎗️ ѕнαяє🎗️ ѕυρρσят🎗️
+╚════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╝>"""
+    
     STATUS_TXT = """📂 𝖳𝗈𝗍𝖺𝗅 𝖥𝗂𝗅𝖾𝗌     - <code>{}</code>
 
 𒆜  𝗗𝗕 1️⃣
