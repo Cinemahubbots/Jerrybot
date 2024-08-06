@@ -1,6 +1,7 @@
 import re
 from os import environ
 from dotenv import load_dotenv
+from Script import script 
 load_dotenv("./dynamic.env", override=True)
 
 id_pattern = re.compile(r'^.\d+$')
