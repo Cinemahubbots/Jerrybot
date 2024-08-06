@@ -1,4 +1,4 @@
-# Kanged From @TroJanZheX
+lock = asyncio.Lock()
 import asyncio
 import re
 import ast
