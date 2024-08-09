@@ -816,13 +816,12 @@ async def advantage_spell_chok(msg):
         )
             
     ]]
-    spl = await message.reply_text(text=NON_IMG.format(mv_rqst), reply_markup=InlineKeyboardMarkup(btn))    
-    await asyncio.sleep()
-    await spl.delete()
+    k = await msg.reply_text(text=script.NON_IMG.format(search), reply_markup=InlineKeyboardMarkup(btn))
+    await asyncio.sleep(120)
+    await k.delete()
     await msg.delete()
     return   
-
-
+	
 async def manual_filters(client, message, text=False):
     group_id = message.chat.id
     name = text or message.text
