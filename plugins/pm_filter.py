@@ -1,4 +1,6 @@
 import asyncio
+lock = asyncio.Lock()
+import asyncio
 import re
 import ast
 import math
