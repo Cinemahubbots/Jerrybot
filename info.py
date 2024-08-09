@@ -40,14 +40,12 @@ DATABASE_URI3 = environ.get('DATABASE_URI3', "mongodb+srv://JERRY2:JERRY2@cluste
 DATABASE_URI4 = environ.get('DATABASE_URI4', "mongodb+srv://JEERY4:JEERY4@cluster0.b41jpnc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI5 = environ.get('DATABASE_URI5', "mongodb+srv://JEERY5:JEERY5@cluster0.kaplqbo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
                             
-# FSUB
-auth_channel = environ.get('AUTH_CHANNEL')
-AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
-# Set to False inside the bracket if you don't want to use Request Channel else set it to Channel ID
+# Dont Change Anything Here
 REQ_CHANNEL=environ.get("REQ_CHANNEL", None)
 REQ_CHANNEL = (int(REQ_CHANNEL) if REQ_CHANNEL and id_pattern.search(REQ_CHANNEL) else False) if REQ_CHANNEL is not None else None
 JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 DELETE_TIMEOUT = int(environ.get('DELETE_TIMEOUT', 2*60*60)) # 2 hours in seconds
+
 
 # Others
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1001632393579))
