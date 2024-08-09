@@ -418,6 +418,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             caption=f_caption,
             protect_content=True if ident == 'checksubp' else False
         )
+    elif query.data == "mfna":
+        await query.answer("𝑴𝒂𝒏𝒖𝒂𝒍 𝑭𝒊𝒍𝒕𝒆𝒓 𝒊𝒔 𝑪𝒖𝒓𝒓𝒆𝒏𝒕𝒍𝒚 𝑫𝒊𝒔𝒂𝒃𝒍𝒆𝒅..!!", show_alert=True)
+	    
     elif query.data == "pages":
         await query.answer()
 
@@ -505,7 +508,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer('Piracy Is Crime')
     elif query.data == "help":
         buttons = [[
-            InlineKeyboardButton('ᴍᴀɴɴᴜᴀʟ ꜰɪʟᴛᴇʀ 🔧', callback_data='manuelfilter'),
+            InlineKeyboardButton('ᴍᴀɴɴᴜᴀʟ ꜰɪʟᴛᴇʀ 🔧', 'mfna'),
             InlineKeyboardButton('ᴀᴜᴛᴏ ꜰɪʟᴛᴇʀ 🛠', callback_data='autofilter')
         ], [
             InlineKeyboardButton('ᴄᴏɴɴᴇᴄᴛɪᴏɴ 🔗', callback_data='coct'),
