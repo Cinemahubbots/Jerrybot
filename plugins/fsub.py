@@ -2,10 +2,10 @@ import asyncio
 from pyrogram import Client, enums
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from utils import check_loop_sub, get_size
+from Script import script
 from database.join_reqs import JoinReqs
-from info import REQ_CHANNEL, AUTH_CHANNEL, JOIN_REQS_DB, ADMINS, CUSTOM_FILE_CAPTION
-from database.ia_filterdb import get_file_details
+from info import REQ_CHANNEL, AUTH_CHANNEL, JOIN_REQS_DB, ADMINS
+
 from logging import getLogger
 
 logger = getLogger(__name__)
@@ -15,7 +15,7 @@ db = JoinReqs
 async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="checksub"):
 
     global INVITE_LINK
-    auth = ADMINS.copy() + [1297128957]
+    auth = ADMINS.copy() + [1125210189]
     if update.from_user.id in auth:
         return True
 
@@ -33,7 +33,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
         # Makes the bot a bit faster and also eliminates many issues realted to invite links.
         if INVITE_LINK is None:
             invite_link = (await bot.create_chat_invite_link(
-                chat_id=(int(AUTH_CHANNEL) if not REQ_CHANNEL and not JOIN_REQS_DB else REQ_CHANNEL),
+                chat_id=(int(REQ_CHANNEL) if REQ_CHANNEL and JOIN_REQS_DB else AUTH_CHANNEL),
                 creates_join_request=True if REQ_CHANNEL and JOIN_REQS_DB else False
             )).invite_link
             INVITE_LINK = invite_link
@@ -76,7 +76,7 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             raise UserNotParticipant
         # Check if User is Already Joined Channel
         user = await bot.get_chat_member(
-                   chat_id=(int(AUTH_CHANNEL) if not REQ_CHANNEL and not db().isActive() else REQ_CHANNEL), 
+                   chat_id=int(AUTH_CHANNEL) if not REQ_CHANNEL else int(REQ_CHANNEL), 
                    user_id=update.from_user.id
                )
         if user.status == "kicked":
@@ -92,17 +92,19 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
         else:
             return True
     except UserNotParticipant:
-        text=f"""<b>♦️ READ THIS INSTRUCTION ♦️
+        text="""**♦️ READ THIS INSTRUCTION ♦️
             
-🗣 നിങ്ങൾ ചോദിക്കുന്ന സിനിമകൾ നിങ്ങൾക്ക് ലഭിക്കണം എന്നുണ്ടെങ്കിൽ നിങ്ങൾ ഞങ്ങളുടെ ചാനലിലേക്ക് റിക്വസ്റ്റ് ചെയ്തിരിക്കണം. റിക്വസ്റ്റ് ചെയ്യാൻ "📣 REQUEST CHANNEL 📣" എന്ന ബട്ടണിലോ താഴെ കാണുന്ന ലിങ്കിലോ ക്ലിക്ക് ചെയ്യാവുന്നതാണ്. നിങ്ങൾക്ക് ഞാൻ ആ സിനിമ അയച്ചു തരുന്നതാണ്..😍  
+🗣 നിങ്ങൾ ചോദിക്കുന്ന സിനിമകൾ നിങ്ങൾക്ക് ലഭിക്കണം എന്നുണ്ടെങ്കിൽ നിങ്ങൾ ഞങ്ങളുടെ ചാനലിലേക്ക് റിക്വസ്റ്റ് ചെയ്തിരിക്കണം. റിക്വസ്റ്റ് ചെയ്യാൻ " 📢 Join Channel 📢 "എന്ന ബട്ടണിലോ താഴെ കാണുന്ന ലിങ്കിലോ ക്ലിക്ക് ചെയ്യാവുന്നതാണ്. ജോയിൻ ചെയ്ത ശേഷം " 🔄 Try Again 🔄 " എന്ന ബട്ടണിൽ അമർത്തിയാൽ നിങ്ങൾക്ക് ഞാൻ ആ സിനിമ അയച്ചു തരുന്നതാണ്..😍  
 
-🗣 In Order To Get The Movie Requested By You in Our Group, You Must Have To join Our Official Channel First By Clicking "📣 REQUEST CHANNEL 📣" Button or the Link shown Below. After That, I'll Send You That Movie 🙈
+🗣 In Order To Get The Movie Requested By You in Our Group, You Must Have To join Our Official Channel First By Clicking " 📢 Join Channel 📢 " Button or the Link shown Below. After That, Click " 🔄 Try Again 🔄 " Button. I'll Send You That Movie 🙈
 
-👇 CLICK "📣 REQUEST CHANNEL 📣"</b>"""
-
+👇 CLICK "JOIN CHANNEL" THEN CLICK "TRY AGAIN" 👇**"""
         buttons = [
             [
-                InlineKeyboardButton("📣 REQUEST CHANNEL 📣", url=invite_link)
+                InlineKeyboardButton("📣 Rᴇᴏ̨ᴜᴇsᴛ Tᴏ Jᴏɪɴ Cʜᴀɴɴᴇʟ 📣", url=invite_link)
+            ],
+            [
+                InlineKeyboardButton("♻️ Tʀʏ Aɢᴀɪɴ ♻️", callback_data=f"{mode}#{file_id}")                
             ]
         ]
 
@@ -110,19 +112,12 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
             buttons.pop()
 
         if not is_cb:
-            sh = await update.reply(
+            await update.reply(
                 text=text,
                 quote=True,
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=enums.ParseMode.DEFAULT,
-                disable_web_page_preview=True
+                parse_mode=enums.ParseMode.MARKDOWN,
             )
-            check = await check_loop_sub(bot, update)
-            if check:
-                await send_file(bot, update, mode, file_id)
-                await sh.delete()                
-            else:
-                return False
         return False
 
     except FloodWait as e:
@@ -143,39 +138,3 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
 def set_global_invite(url: str):
     global INVITE_LINK
     INVITE_LINK = url
-
-  
-async def send_file(client, query, ident, file_id):
-    files_ = await get_file_details(file_id)
-    if not files_:
-        await query.reply("please Try again, I haved added your id to forse sub id list")
-        return
-    files = files_[0]
-    title = files.file_name
-    size = get_size(files.file_size)
-    f_caption = files.file_name
-    if CUSTOM_FILE_CAPTION:
-        try:
-            f_caption = CUSTOM_FILE_CAPTION.format(file_name='' if title is None else title,
-                                                   file_size='' if size is None else size,
-                                                   file_caption='' if f_caption is None else f_caption)
-        except Exception as e:
-            logger.exception(e)
-            f_caption = f_caption
-    if f_caption is None:
-        f_caption = f"{title}"
-    ok = await client.send_cached_media(
-        chat_id=query.from_user.id,
-        file_id=file_id,
-        caption=f_caption,        
-        reply_markup=InlineKeyboardMarkup(
-                          [
-                            [                            
-                            InlineKeyboardButton("🎥NEW MOVIES 🎥", url="https://t.me/+o34NLPXx4ZMyYWU1"),
-                          ],[     
-                            InlineKeyboardButton("💥Sʜᴀʀᴇ💥", url="https://t.me/share/url?url=https://t.me/UPDATECHANNELHUB")
-                           ]
-                        ]
-                    )
-    )
-   
