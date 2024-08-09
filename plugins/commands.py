@@ -286,7 +286,7 @@ async def delete(bot, message):
     if reply and reply.media:
         msg = await message.reply("Processing...⏳", quote=True)
     else:
-        await message.reply('Reply to file with /delete which you want to delete', quote=True)
+        await message.reply('Reply to the file with /delete that you want to delete', quote=True)
         return
 
     for file_type in ("document", "video", "audio"):
@@ -294,37 +294,37 @@ async def delete(bot, message):
         if media is not None:
             break
     else:
-        await msg.edit('This is not supported file format')
+        await msg.edit('This is not a supported file format')
         return
     
     file_id, file_ref = unpack_new_file_id(media.file_id)
 
-    result = await Media.collection.delete_one({
-        '_id': file_id,
-    })
-    if result.deleted_count:
-        await msg.edit('File is successfully deleted from database')
+    # Check if the file exists in Media collection
+    result_media1 = await Media2.collection.find_one({'_id': file_id})
+
+    # Check if the file exists in Mediaa collection
+    result_media2 = await Media3.collection.find_one({'_id': file_id})   
+    result_media3 = await Media4.collection.find_one({'_id': file_id})   
+    result_media4 = await Media5.collection.find_one({'_id': file_id})   
+        
+    if result_media1:
+        # Delete from Media collection
+        await Media2.collection.delete_one({'_id': file_id})
+    elif result_media2:
+        # Delete from Mediaa collection
+        await Media3.collection.delete_one({'_id': file_id})
+    elif result_media3:
+        # Delete from Mediaa collection
+        await Media4.collection.delete_one({'_id': file_id})
+    elif result_media4:
+        # Delete from Mediaa collection
+        await Media5.collection.delete_one({'_id': file_id})
     else:
-        file_name = re.sub(r"(_|\-|\.|\+)", " ", str(media.file_name))
-        result = await Media.collection.delete_many({
-            'file_name': file_name,
-            'file_size': media.file_size,
-            'mime_type': media.mime_type
-            })
-        if result.deleted_count:
-            await msg.edit('File is successfully deleted from database')
-        else:
-            # files indexed before https://github.com/EvamariaTG/EvaMaria/commit/f3d2a1bcb155faf44178e5d7a685a1b533e714bf#diff-86b613edf1748372103e94cacff3b578b36b698ef9c16817bb98fe9ef22fb669R39 
-            # have original file name.
-            result = await Media.collection.delete_many({
-                'file_name': media.file_name,
-                'file_size': media.file_size,
-                'mime_type': media.mime_type
-            })
-            if result.deleted_count:
-                await msg.edit('File is successfully deleted from database')
-            else:
-                await msg.edit('File not found in database')
+        # File not found in both collections
+        await msg.edit('File not found in the database')
+        return
+
+    await msg.edit('File is successfully deleted from the database')
 
 
 @Client.on_message(filters.command('deleteall') & filters.user(ADMINS))
