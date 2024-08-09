@@ -816,10 +816,9 @@ async def advantage_spell_chok(msg):
         )
             
     ]]
-    k = await msg.reply_text(text=NON_IMG.format(mv_rqst), reply_markup=InlineKeyboardMarkup(btn))
-    await asyncio.sleep()
-    await k.delete()
-    await msg.delete()
+    await msg.reply_text(text=NON_IMG.format(mv_rqst), reply_markup=InlineKeyboardMarkup(btn))
+	
+    #await msg.delete()
     return   
 	
 async def manual_filters(client, message, text=False):
