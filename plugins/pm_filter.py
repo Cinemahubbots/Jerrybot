@@ -816,7 +816,7 @@ async def advantage_spell_chok(msg):
         )
             
     ]]
-    k = await msg.reply_text(text=script.NON_IMG.format(search), reply_markup=InlineKeyboardMarkup(btn))
+    k = await msg.reply_text(text=NON_IMG.format(mv_rqst), reply_markup=InlineKeyboardMarkup(btn))
     await asyncio.sleep()
     await k.delete()
     await msg.delete()
