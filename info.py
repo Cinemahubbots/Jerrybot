@@ -41,7 +41,7 @@ DATABASE_URI4 = environ.get('DATABASE_URI4', "mongodb+srv://JEERY4:JEERY4@cluste
 DATABASE_URI5 = environ.get('DATABASE_URI5', "mongodb+srv://JEERY5:JEERY5@cluster0.kaplqbo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
                             
 # Dont Change Anything Here
-REQ_CHANNEL=environ.get("REQ_CHANNEL", ' -1002249955310')
+REQ_CHANNEL=environ.get("REQ_CHANNEL",None)
 REQ_CHANNEL = (int(REQ_CHANNEL) if REQ_CHANNEL and id_pattern.search(REQ_CHANNEL) else False) if REQ_CHANNEL is not None else None
 JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 DELETE_TIMEOUT = int(environ.get('DELETE_TIMEOUT', 2*60*60)) # 2 hours in seconds
