@@ -1,4 +1,4 @@
-import asyncio
+9import asyncio
 lock = asyncio.Lock()
 import asyncio
 import re
@@ -44,7 +44,7 @@ NON_IMG = """<b>‼️ FILE NOT FOUND ? ‼️
 BTN = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🎥NEW MOVIES 🎥", url="https://t.me/+o34NLPXx4ZMyYWU1"),
+                    InlineKeyboardButton("🎥NEW MOVIES 🎥", url="https://t.me/CINEMA_HUB_NEWMOVIES"),
                     InlineKeyboardButton("💥Sʜᴀʀᴇ💥", url="https://t.me/share/url?url=https://t.me/UPDATECHANNELHUB")
                 ]
 		        
